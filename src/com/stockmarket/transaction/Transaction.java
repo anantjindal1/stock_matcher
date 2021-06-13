@@ -1,16 +1,22 @@
-package com.stockmarket.dataobj;
+package com.stockmarket.transaction;
 
 import java.math.BigDecimal;
+import java.time.LocalTime;
 
 public class Transaction {
-    String sellerId;
-    String buyerId;
+    private String sellerId;
+    private String buyerId;
 
-    public Transaction(String sellerId, String buyerId, BigDecimal price, int qty) {
+    private BigDecimal price;
+    private int qty;
+    private LocalTime requestTime;
+
+    public Transaction(String sellerId, String buyerId, BigDecimal price, int qty, LocalTime requestTime) {
         this.sellerId = sellerId;
         this.buyerId = buyerId;
         this.price = price;
         this.qty = qty;
+        this.requestTime = requestTime;
     }
 
     public String getSellerId() {
@@ -45,7 +51,14 @@ public class Transaction {
         this.qty = qty;
     }
 
-    BigDecimal price;
-    int qty;
-
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "sellerId='" + sellerId + '\'' +
+                ", buyerId='" + buyerId + '\'' +
+                ", price=" + price +
+                ", qty=" + qty +
+                ", requestTime=" + requestTime +
+                '}';
+    }
 }
